@@ -1,13 +1,14 @@
+encoding  utf-8
 # 2025.02.22 created by TopoDroid v 5.1.40
 
-survey kiseli10.02.24 -title "kiseli10.02.24"
+survey seminar2025_09d -title "seminar2025 09d"
     # старались как могли) 
 
-  input "../th2/kiseli10.02.24-1p.th2"
+  input "seminar2025_09d-1p.th2"
 
-  # map m1p -projection plan
-  #   kiseli10.02.24-1p
-  # endmap
+  map m1p -projection plan
+  seminar2025_09d-1p
+  endmap
 
   centerline
     date 2024.02.10 
@@ -386,3 +387,4 @@ survey kiseli10.02.24 -title "kiseli10.02.24"
   endcenterline
 
 endsurvey
+

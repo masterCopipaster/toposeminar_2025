@@ -4,7 +4,7 @@ encoding utf-8
 
 # 2025.02.22 created by TopoDroid v. 5.1.40
 
-scrap kiseli10.02.24-1p -projection plan -scale [0 0 39.3701 0 0 0 1 0 m]
+scrap seminar2025_09d-1p -projection plan -scale [0 0 39.3701 0 0 0 1 0 m]
 
 line wall
   697.10 -18.88
