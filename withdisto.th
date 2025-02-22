@@ -11,14 +11,14 @@ survey withdisto -title "кам. Дистососная"
 ### ФАЙЛЫ СЪЁМОК ###
    input source/seminar2025_05d/seminar2025_05d.th
    input source/seminar2025_02d/seminar2025_02d.th
-    
+   input source/seminar2025_08d/seminar2025_08d.th 
    
 
 ### СТЫКОВКА ПИКЕТОВ РАЗНЫХ СЪЁМОК ###
    equate R04 R04@seminar2025_05d
    equate R03@seminar2025_05d R03@seminar2025_02d
- 
-   
+   equate r07@seminar2025_06d R07@seminar2025_08d
+   #equate R08@seminar2025_11d R08@seminar2025_08d
    
 
 ### СТЫКОВКА СКРАПОВ (АБРИСОВ) ###
@@ -31,11 +31,13 @@ survey withdisto -title "кам. Дистососная"
   map withdistop -projection plan
     m1p@seminar2025_05d
     m1p@seminar2025_02d
+    m1p@seminar2025_08d
   endmap   
   
   map withdisto_linep -projection plan
   seminar2025_05d 
   seminar2025_02d
+  seminar2025_08d
   endmap
 
 endsurvey
