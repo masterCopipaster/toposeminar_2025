@@ -2,7 +2,7 @@ encoding utf-8
 ##XTHERION## xth_me_area_adjust -0.3 -1558.5 1286.1 48.0
 ##XTHERION## xth_me_area_zoom_to 25
 
-# 2025.02.21 created by TopoDroid v. 5.1.40
+# 2025.02.22 created by TopoDroid v. 5.1.40
 
 scrap seminar2025_06d-1p -projection plan -scale [0 0 39.3701 0 0 0 1 0 m]
 
@@ -742,7 +742,6 @@ line wall:debris
   313.55 -375.87
   313.25 -372.25 315.24 -357.31 320.16 -356.53
   320.35 -356.50 320.57 -356.57 320.72 -356.69
-  322.42 -358.00 314.96 -379.23 313.33 -375.90
 endline
 
 line wall
@@ -753,6 +752,11 @@ endline
 line wall
   734.71 -302.55
   735.70 -294.83 732.62 -285.54 732.72 -278.98
+endline
+
+line wall:debris
+  320.72 -356.69
+  320.55 -358.75 316.80 -375.89 313.55 -375.87
 endline
 
 
