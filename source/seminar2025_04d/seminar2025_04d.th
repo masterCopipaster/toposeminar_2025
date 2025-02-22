@@ -1,13 +1,14 @@
+encoding  utf-8
 # 2025.02.18 created by TopoDroid v 5.1.40
 
 survey seminar2025_04d -title "seminar2025 04d"
     # авторы - Сергей, Шурш 
 
-  input "../th2/seminar2025_04d-2p.th2"
+  input "seminar2025_04d-2p.th2"
 
-  # map m2p -projection plan
-  #   seminar2025_04d-2p
-  # endmap
+   map m2p -projection plan
+     seminar2025_04d-2p
+   endmap
 
   centerline
     date 2025.02.15 
@@ -358,3 +359,4 @@ survey seminar2025_04d -title "seminar2025 04d"
   endcenterline
 
 endsurvey
+
