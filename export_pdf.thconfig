@@ -1,0 +1,48 @@
+encoding  utf-8
+source withdisto.th
+ 
+input symbols_mine                          # Подгружаем файл с пользовательскими линиями и т.п.
+  
+layout pdf-map  -copy symbols_mine
+  code metapost                             # задаем уровни отображения символов карты
+    symbol_complexity_area := 0;
+    symbol_complexity_line := 0;
+    symbol_complexity_point := 0;
+  endcode
+  scale 1 200                               # Масштаб съёмки
+  surface bottom
+#  rotate 60                                 # Угол поворота съёмки (0 - ориентация на географический север)
+  language ru                               # Язык надписей в карте
+# symbol-hide group cave-centerline         # Нитка хода (show - вкл., hide - выкл.)
+  symbol-hide line border                   # Границы областей (show - вкл., hide - выкл.)
+  symbol-show point cave-station            # Пикеты (show - вкл., hide - выкл.)
+  symbol-show point flag:entrance           # Входы (show - вкл., hide - выкл.)
+  symbol-show point flag:dig                # Раскопы (show - вкл., hide - выкл.)
+#  debug station-names                       # Показывать номера пикетов
+  debug all                                 # Режим отладки
+  color map-fg scrap                        # Раскраска по скрапам
+#  color-legend off                          # Отключаем цветовую легенду
+  code tex-map                              # Альтернативно одарённая основная надпись (блок)
+    #\cavename={\size [25] Пример топосъёмки} % Название пещеры принудительно
+    \cavedepth={}                           % Глубина пещеры принудительно (пустое значение не отображается)
+  endcode
+  grid bottom                               # Сетка в нижнем слое
+  grid-size 50 50 50 m                      # Размер ячейки сетки
+  cs lat-long                               # Система координат для следующей строчки
+  grid-origin 55.475298 37.807551 173.2 m   # "Нулевая точка" для сетки
+  grid-coords border                        #
+  survey-level 0                            #
+  map-header 5 -3 nw                        # Положение основной надписи карты
+  map-header-bg on                          # Заливка фона основной надписи вкл/выкл
+  map-image 25 -3 nw Perovo.png             # Растровое изображение в заданной точке карты
+  legend on                                 # Легенда  карты вкл/выкл
+  legend-width 40 cm                        # Ширина поля легенды карты
+  legend-columns 10                         # Число колонок в легендле карты
+  map-comment "Рабочая схема спелеоклуба ''Перово''"  # Заданная фраза внутри основной надписи
+  doc-author "Спелеоклуб Перово"            # Автор документа
+endlayout
+
+select withdistop@withdisto
+select withdisto_linep@withdisto
+  
+export map -proj plan -fmt pdf -layout pdf-map -o withdisto_map.pdf

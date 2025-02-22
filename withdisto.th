@@ -1,0 +1,48 @@
+encoding  utf-8
+survey withdisto -title "кам. Дистососная"
+
+### "СЪЁМКА" С КООРДИНАТАМИ ВХОДА ###
+   centreline
+     cs lat-long
+     fix R07 55.475298 37.807551 173.2     # координаты Камкино на самом деле
+     station R07 "R07" entrance
+   endcentreline
+
+### ФАЙЛЫ СЪЁМОК ###
+   #input source/sem23_uch03/sem23_uch03.th
+   input source/Kiseli_R06/Kiseli_R06.th
+   input source/2024_2_03/2024_2_03.th
+   input source/Kiseli_02/Kiseli_02.th
+   input source/Kiseli_05/Kiseli_05.th
+    
+   
+
+### СТЫКОВКА ПИКЕТОВ РАЗНЫХ СЪЁМОК ###
+   equate R07 R06@Kiseli_R06
+   equate r01@2024_2_03 R01@Kiseli_R06
+   equate R02@Kiseli_02 r02@2024_2_03
+   equate R03@Kiseli_05 R03@Kiseli_02
+   
+ 
+   
+   
+
+### СТЫКОВКА СКРАПОВ (АБРИСОВ) ###
+  #join sem23_uch06-1p@sem23_uch06 sem23_uch08-uch08p@sem23_uch08 -smooth on     
+  #join sem23_uch06-1p@sem23_uch06 sem23-uch05-1p@sem23-uch05 -smooth on
+ 
+  
+    
+### ВКЛЮЧЕНИЕ ЧАСТЕЙ АБРИСА (СКРАПОВ ИЛИ МАПОВ) В ИТОГОВЫЙ МАП (КАРТУ) ###
+  map withdistop -projection plan
+  m1p@2024_2_03
+  m1p@Kiseli_05
+   
+    
+  endmap   
+  map withdisto_linep -projection plan
+  Kiseli_R06
+  endmap
+
+endsurvey
+

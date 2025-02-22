@@ -1,0 +1,5 @@
+encoding  utf-8
+source withdisto.th
+
+ export model -output withdisto.kml 
+ export map -output withdisto1.kml -projection plan

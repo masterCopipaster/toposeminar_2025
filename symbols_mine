@@ -1,0 +1,820 @@
+encoding  utf-8
+layout symbols_mine
+ 
+	code metapost
+	
+		symbol_complexity_area := 0;
+		symbol_complexity_line := 0;
+		symbol_complexity_point := 0;
+		
+		def color_l_stonework = (0.4,0.4,0.4) enddef;
+		
+		def l_u_stonework (expr P) =
+			T:=identity;
+			if symbol_complexity_line > 1:
+				pickup PenB
+				thdraw P withcolor color_l_stonework
+			else:
+				cas := 0;
+				dlina := arclength P;
+				if dlina > 0:
+					shag:=adjust_step(dlina, 0.75u);
+					pickup PenB;
+					forever:
+						t1 := arctime (cas + shag*1/10) of P;
+						t2 := arctime (cas + shag*9/10) of P;
+						q := ((point t1 of P) + .15u * unitvector(thdir(P,t1) rotated -90)) --
+							 ((point t2 of P) + .15u * unitvector(thdir(P,t2) rotated -90)) --
+							 ((point t2 of P) + .15u * unitvector(thdir(P,t2) rotated 90)) --
+							 ((point t1 of P) + .15u * unitvector(thdir(P,t1) rotated 90)) --
+							 cycle;
+						thfill q withcolor (0.98,0.93,0.68);
+						thdraw q randomized (u/10) withcolor (0.5,0.5,0.5);
+						cas := cas + shag;
+						exitif cas > dlina - (2*shag/3); % for rounding errors
+					endfor;
+				fi;
+			fi;
+		enddef;
+		initsymbol("l_u_stonework");
+		
+		def color_l_rockfall = (1,0,0) enddef;
+		
+		def l_u_rockfall (expr P) =
+			T:=identity;
+			cas := 0;
+			dlina := arclength P;
+			if symbol_complexity_line > 1:
+				pickup PenA
+				thdraw P withcolor color_l_rockfall
+			else:
+				if dlina > 0:
+					shag:=adjust_step(dlina, 0.45u);
+					pickup PenB;
+					forever:
+						t1 := arctime (cas) of P;
+						t2 := arctime (cas + shag*1/3) of P;
+						t3 := arctime (cas + shag*2/3) of P;
+						t4 := arctime (cas + shag) of P;
+						p := (point t1 of P) --
+							 ((point t2 of P) + .25u * unitvector(thdir(P,t2) rotated 90)) --
+							 ((point t3 of P) + .25u * unitvector(thdir(P,t3) rotated -90)) --
+							 (point t4 of P) --
+							 cycle;
+						thfill p withcolor (0.98,0.93,0.68);	 
+						q := (point t1 of P) --
+							 ((point t2 of P) + .25u * unitvector(thdir(P,t2) rotated 90)) --
+							 ((point t3 of P) + .25u * unitvector(thdir(P,t3) rotated -90)) --
+							 (point t4 of P);
+						thdraw q withcolor (1,0,0);
+						cas := cas + shag;
+						exitif cas > dlina - (2*shag/3); % for rounding errors
+					endfor;
+				fi;
+			fi;
+		enddef;
+		initsymbol("l_u_rockfall");
+		
+		def color_l_freestonework = (0.6,0.6,0.6) enddef;
+		
+		def l_u_freestonework (expr P) =
+			T:=identity;
+			if symbol_complexity_line > 1:
+				pickup PenB
+				thdraw P withcolor color_l_freestonework
+			else:
+				cas := 0;
+				dlina := arclength P;
+				if dlina > 0:
+					shag:=adjust_step(dlina, 0.75u);
+					pickup PenD;
+					forever:
+						t1 := arctime (cas + shag*1/10) of P;
+						t2 := arctime (cas + shag*9/10) of P;
+						q := ((point t1 of P) + .15u * unitvector(thdir(P,t1) rotated -90)) --
+							 ((point t2 of P) + .15u * unitvector(thdir(P,t2) rotated -90)) --
+							 ((point t2 of P) + .15u * unitvector(thdir(P,t2) rotated 90)) --
+							 ((point t1 of P) + .15u * unitvector(thdir(P,t1) rotated 90)) --
+							 cycle;
+						thfill q withcolor (0.98,0.93,0.68);
+						thdraw q randomized (u/10) withcolor (0.5,0.5,0.5);
+						cas := cas + shag;
+						exitif cas > dlina - (2*shag/3); % for rounding errors
+					endfor;
+				fi;
+			fi;
+		enddef;
+		initsymbol("l_u_freestonework");	
+		
+		def l_u_freeofwork (expr P) =
+			T:=identity;
+			cas := 0;
+			dlina := arclength P;
+			if dlina > 0:
+				shag:=adjust_step(dlina, 1.1*u);
+				pickup PenD;
+				forever:
+					t0 := arctime (cas) of P;
+					pair x; x := .1u * unitvector(thdir(P,t0) rotated 0);
+					pair y; y := .1u * unitvector(thdir(P,t0) rotated 90);
+					q := ((point t0 of P) + 1*x + 0*y) --
+					((point t0 of P) + 0*x + 1*y) --
+					((point t0 of P) + 0*x + 3*y) --
+					((point t0 of P) + 1*x + 4*y) --
+					((point t0 of P) + 3*x + 4*y) --
+					((point t0 of P) + 4*x + 3*y) --
+					((point t0 of P) + 4*x + 2*y) --
+					((point t0 of P) + 9*x + 2*y) --
+					((point t0 of P) + 10*x + 1*y) --
+					((point t0 of P) + 10*x + -1*y) --
+					((point t0 of P) + 9*x + -2*y) --
+					((point t0 of P) + 4*x + -2*y) --
+					((point t0 of P) + 4*x + -3*y) --
+					((point t0 of P) + 3*x + -4*y) --
+					((point t0 of P) + 1*x + -4*y) --
+					((point t0 of P) + 0*x + -3*y) --
+					((point t0 of P) + 0*x + -1*y) --
+					((point t0 of P) + 1*x + 0*y) --
+					cycle;
+					p := ((point t0 of P) + 7*x + 2*y) -- ((point t0 of P) + 7*x + -2*y);
+					path r; r := ((point t0 of P) + 9*x + 0*y) -- ((point t0 of P) + 10*x + 0*y);
+					thfill q withcolor (1,0.5,0.5) ;
+					thdraw q withcolor (0.3,0.3,0.3) ;
+					thdraw p randomized (u/30) withcolor (0.3,0.3,0.3) ;
+					thdraw r randomized (u/30) withcolor (0.3,0.3,0.3) ;
+					cas := cas + shag;
+					exitif cas > dlina - (2*shag/3); % for rounding errors
+				endfor;
+			fi;
+		enddef;
+		initsymbol("l_u_freeofwork");
+		
+		def p_u_stonesupport (expr pos,theta,sc,al)=
+			U:=(0,0);
+			T:=identity aligned al rotated theta scaled sc shifted pos;
+			if symbol_complexity_point > 1:
+			fi;
+			if symbol_complexity_point = 1:
+				pickup PenA;
+				sz := 0.2u;
+				p := (sz, sz) -- (-sz, sz) -- (-sz, -sz) -- (sz, -sz) -- cycle;
+				thdraw p;
+			fi;
+			if symbol_complexity_point = 0:
+				pickup PenD;
+				p := (.05u, .05u) -- (.4u, .05u) -- (.4u, .4u) -- (.05u, .4u) -- cycle;
+				thfill p withcolor (0.98,0.93,0.68);
+				thdraw p randomized (u/20) withcolor (0.5,0.5,0.5);
+				p := (-.05u, .05u) -- (-.4u, .05u) -- (-.4u, .4u) -- (-.05u, .4u) -- cycle;
+				thfill p withcolor (0.98,0.93,0.68);
+				thdraw p randomized (u/20) withcolor (0.5,0.5,0.5);
+				p := (.05u, -.05u) -- (.4u, -.05u) -- (.4u, -.4u) -- (.05u, -.4u) -- cycle;
+				thfill p withcolor (0.98,0.93,0.68);
+				thdraw p randomized (u/20) withcolor (0.5,0.5,0.5);
+				p := (-.05u, -.05u) -- (-.4u, -.05u) -- (-.4u, -.4u) -- (-.05u, -.4u) -- cycle;
+				thfill p withcolor (0.98,0.93,0.68);
+				thdraw p randomized (u/20) withcolor (0.5,0.5,0.5);
+			fi;
+		enddef;
+		initsymbol("p_u_stonesupport");
+		
+		def s_northarrow (expr rot) =
+            valscal=1.0; % scale your north arrow here
+            decl:=MagDecl; 
+            T:=identity;
+            picture tmp_pic;
+            tmp_pic = image (
+                          pickup pencircle scaled .3;
+                          thfill fullcircle scaled 4cm withcolor (1,1,1);
+                          thdraw fullcircle scaled 3.1cm;
+                          thdraw fullcircle scaled 4.05cm;
+                          pickup pencircle scaled .1;
+                          thdraw fullcircle scaled 3cm;
+                          thdraw fullcircle scaled 4cm;
+                          pickup pencircle scaled .2;
+                          thdraw (dir(45)*2.025cm)--(dir(45)*3.7cm);
+                          thdraw (dir(135)*2.025cm)--(dir(135)*3.7cm);
+                          thdraw (dir(225)*2.025cm)--(dir(225)*3.7cm);
+                          thdraw (dir(315)*2.025cm)--(dir(315)*3.7cm);
+                          pickup pencircle scaled .1;
+                          for whereto=0 step 15 until 345:
+                            thdraw dir(whereto)*.65cm--dir(whereto)*.9cm;
+                            thdraw dir(whereto)*1.4cm--dir(whereto)*1.5cm;
+                          endfor;
+                          for whereto=0 step 5 until 355:
+                            thdraw dir(whereto)*.65cm--dir(whereto)*.8cm;
+                            thdraw dir(whereto)*1.45cm--dir(whereto)*1.5cm;
+                          endfor; 
+                          for whereto=0 step 1 until 359:
+                            thdraw dir(whereto)*1.94cm--dir(whereto)*2cm;
+                          endfor; 
+                          pickup pencircle scaled 1;
+                          thdraw fullcircle scaled 1cm;
+                          thdraw fullcircle scaled 1.1cm;
+                          thdraw fullcircle scaled 1.3cm withpen pencircle scaled .3;
+                          vald=90-decl;
+                          texrot=0-decl;
+                          drawarrow(dir(vald)*-2cm--dir(vald)*2cm) withpen pencircle scaled .2;
+                          if (MagDecl <> 0): thdraw image(label.top(btex $mg$ etex, (0,0)) scaled .5 rotated texrot;) shifted (dir(vald)*2.04cm); fi;                                               
+                          thfill (1.06cm,1.06cm)--(0,.2cm)--(-1.06cm,1.06cm)--(-.2cm,0)--(-1.06cm,-1.06cm)--(0,-.2cm)--(1.06cm,-1.06cm)--(.2cm,0)--cycle;
+                          thfill (-.2cm,.2cm)--(0,2cm)--(0,0)--cycle;
+                          thfill (.2cm,-.2cm)--(0,-2cm)--(0,0)--cycle;
+                          thfill (.2cm,.2cm)--(2cm,0)--(0,0)--cycle;
+                          thfill (-.2cm,-.2cm)--(-2cm,0)--(0,0)--cycle;
+                          thfill (.2cm,.2cm)--(-0,2cm)--(0,0)--cycle withcolor (1,1,1);
+                          thfill (.2cm,-.2cm)--(2cm,0)--(0,0)--cycle withcolor (1,1,1);
+                          thfill (-.2cm,-.2cm)--(0,-2cm)--(0,0)--cycle withcolor (1,1,1);
+                          thfill (-.2cm,.2cm)--(-2cm,0)--(0,0)--cycle withcolor (1,1,1);                                     
+                          pickup pencircle scaled .2;
+                          thdraw (-.2cm,.2cm)--(0,2cm)--(.2cm,.2cm)--(2cm,0cm)--(.2cm,-.2cm)--(0,-2cm)--(-.2cm,-.2cm)--(-2cm,0)--cycle;
+                          thfill fullcircle scaled .56cm withcolor (1,1,1);
+                          pickup pencircle scaled .1;
+                          thdraw (.28cm,0)..(0,.28cm)..(-.28cm,0)..(0,-.28cm)..cycle;
+                          pickup pencircle scaled .4;
+                          thdraw (.2cm,0)..(0,.2cm)..(-.2cm,0)..(0,-.2cm)..cycle;
+                          if (MagDecl = 0): label.bot(btex $Nmag$ etex, (0,2.6cm)); else: label.bot(btex $N$ etex, (0,2.6cm)); fi;
+                          label.lft(btex $E$ etex, (2.6cm,0));
+                          label.rt(btex $W$ etex, (-2.6cm,0));
+                          label.top(btex $S$ etex, (0,-2.6cm));
+            );
+            thdraw tmp_pic scaled valscal rotatedaround(origin, -rot);
+		enddef;
+
+		def s_scalebar (expr l, units, txt) =
+			begingroup
+				interim warningcheck:=0;
+				tmpl:=l / Scale * cm * units / 2;
+				tmpx:=l / Scale * cm * units / 5;
+				tmph:=5bp; % bar height
+			endgroup;
+			pickup PenC;
+			draw (-tmpl,0)--(tmpl,0)--(tmpl,-tmph)--(-tmpl,-tmph)--cycle;
+			p:=(0,0)--(tmpx,0)--(tmpx,-tmph)--(0,-tmph)--cycle;
+			for i:=-2.5 step 2 until 2:
+				fill p shifted (i * tmpx,0);
+			endfor;
+			begingroup
+				interim labeloffset:=3.5bp;
+				for i:=0 step (l/5) until (l-1):
+					tmpx:=tmpl * (i * 2 / l - 1);
+					label.bot(thTEX(decimal (i)),(tmpx,-tmph));
+				endfor;
+				label.bot(thTEX(decimal (l) & "\thinspace" & txt),(tmpl,-tmph));
+				label.top(thTEX("M 1 : " & decimal round(Scale*100)),(0,0));
+			endgroup;
+		enddef;
+		
+		def a_debris_AUT_complex (expr p) =
+			T:=identity;
+			symbol_distance:=0.54;     % 0.64 было стабильным и иногда 0.44
+			scale_factor:= 0.07;
+%			expansion:= 5;
+			pickup PenC;
+			path q, qq; q = bbox p;
+			pair outside;
+			outside:= ulcorner q + up;
+			picture tmp_pic;
+			uu := max(u, (xpart urcorner q - xpart llcorner q)/100,(ypart urcorner q - ypart llcorner q)/100);
+			tmp_pic := image(
+				for i = xpart llcorner q step symbol_distance*uu until xpart urcorner q:
+					for j = ypart llcorner q step symbol_distance*uu until ypart urcorner q:
+						qq := punked (((-.5uu,-.5uu)--(.5uu,-.5uu)--(1.05uu,0.01uu)--(.5uu,.5uu)--(-.5uu,.5uu)--cycle)
+						randomized (uu/2))
+						scaled (uniformdeviate(0.4)+scale_factor)
+						rotated uniformdeviate(360)
+						shifted ((i,j) randomized 0.1uu);
+						if xpart (p intersectiontimes qq) < 0:
+							if pointinside((i,j),p,outside):
+								thclean qq;
+								thdraw qq;
+							fi;
+						else:
+							qq:= qq scaled (uniformdeviate(.2)+0.5)
+							if xpart (p intersectiontimes qq) < 0:
+								if pointinside((i,j),p,outside):
+									thclean qq;
+									thdraw qq;
+								fi;
+							fi;
+						fi;
+					endfor;
+				endfor;
+			);
+			clip tmp_pic to p;
+			drawoptions();
+			draw tmp_pic;
+		enddef;
+		
+		beginpattern(debris_patt); 
+			#pickup PenC; 
+			draw -1000(up+right)--1000(up+right);
+			patternxstep(2mm);
+			#patternbbox(origin, 9up+9right);
+			#patterntransform(identity rotated 45);
+		endpattern;
+		
+		def a_debris_AUT_medium (expr p) =
+			T:=identity;
+			thfill p withpattern debris_patt;
+		enddef;
+		
+		def color_a_debris = (0.8,0.8,0.8) enddef;
+		
+		def a_debris_AUT (expr p) = 
+			T:=identity;
+			if symbol_complexity_area=0:
+				a_debris_AUT_complex(p)
+			fi;
+			if symbol_complexity_area=1:
+				a_debris_AUT_medium(p)
+			fi;
+			if symbol_complexity_area>1:
+				thfill p withcolor color_a_debris
+			fi;
+		enddef;
+		
+		def a_blocks_AUT_complex (expr p) =
+			T:=identity;
+			symbol_distance:=0.6;
+			scale_factor:= 0.4;
+			pickup PenC;
+			path q, qq; q = bbox p;
+			pair outside;
+			outside:= ulcorner q + up;
+			picture tmp_pic;
+			uu := max(u, (xpart urcorner q - xpart llcorner q)/100, (ypart urcorner q - ypart     llcorner q)/100);
+			tmp_pic := image(
+				for i = xpart llcorner q step symbol_distance*uu until xpart urcorner q:
+					for j = ypart llcorner q step symbol_distance*uu until ypart urcorner q:
+						qq := punked (((-.5uu,-.5uu)--(.5uu,-.5uu)--(1.05uu,0.01uu)--(.5uu,.5uu)--(-.5uu,.5uu)--cycle)
+						randomized (uu/2))
+						scaled (uniformdeviate(0.7)+scale_factor )
+						rotated uniformdeviate(360)
+						shifted ((i,j) randomized 0.75uu);
+						if xpart (p intersectiontimes qq) < 0:
+							if pointinside((i,j),p,outside):
+								thclean qq;
+								thdraw qq;
+							fi;
+						else:
+							qq:= qq scaled (uniformdeviate(.2)+.5 );
+							if xpart (p intersectiontimes qq) < 0:
+								if pointinside((i,j),p,outside):
+									thclean qq;
+									thdraw qq;
+								fi;
+							fi;
+						fi;
+					endfor;
+				endfor;
+			);
+			clip tmp_pic to p;
+			drawoptions();
+			draw tmp_pic;
+		enddef;
+		
+		beginpattern(blocks_patt); 
+			#pickup PenC; 
+			draw -1000(up+right)--1000(up+right);
+			draw -1000(up+left)--1000(up+left);
+			patternxstep(2mm);
+			#patternbbox(origin, 9up+9right);
+			#patterntransform(identity rotated 45);
+		endpattern;
+		
+		def a_blocks_AUT_medium (expr p) =
+			T:=identity;
+			thfill p withpattern blocks_patt;
+		enddef;
+		
+		def color_a_blocks = 1.3(1,0.2,0.2) enddef;
+		
+		def a_blocks_AUT (expr p) = 
+			T:=identity;
+			if symbol_complexity_area=0:
+				a_blocks_AUT_complex(p)
+			fi;
+			if symbol_complexity_area=1:
+				a_blocks_AUT_medium(p)
+			fi;
+			if symbol_complexity_area>1:
+				thfill p withcolor color_a_blocks
+			fi;
+		enddef;
+		
+		def l_wall_clay_AUT (expr P) =
+			T:=identity;
+			if symbol_complexity_line > 1:
+				pickup PenB
+				thdraw P
+			else:
+				cas := 0;
+				dlzka := arclength P;
+				mojkrok:=adjust_step(dlzka, 0.15u);
+				pickup PenC;
+				forever:
+					t := arctime cas of P;
+					thdraw (origin shifted ((point t of P) + .12u
+						* unitvector(thdir(P,t) rotated -90)));
+					thdraw (origin shifted ((point t of P) - .12u
+						* unitvector(thdir(P,t) rotated -90)));
+					cas := cas + mojkrok;
+					exitif cas > dlzka + (mojkrok / 3); % for rounding errors
+				endfor;
+				pickup PenC;
+				thdraw P;
+			fi;
+		enddef;
+		
+		def l_u_gravitywall (expr P) = 
+			T:=identity;
+			pickup PenC;
+			thdraw P;
+			if symbol_complexity_line < 2:
+				cas := 0;
+				dlina := arclength P;
+				if dlina > 0:
+					shag:=adjust_step(dlina, 0.4u);
+					forever:
+						t1 := arctime (cas + shag*1/5) of P;
+						t2 := arctime (cas + shag*4/5) of P;
+						p := ((point t1 of P) + .1u * unitvector(thdir(P,t1) rotated -90)){thdir(P,t1)} ..
+							 ((point t2 of P) + .1u * unitvector(thdir(P,t2) rotated -90)){thdir(P,t2)};
+						q := ((point t1 of P) + .1u * unitvector(thdir(P,t2) rotated 90)){thdir(P,t1)} ..
+							 ((point t2 of P) + .1u * unitvector(thdir(P,t1) rotated 90)){thdir(P,t2)};
+						thdraw p withcolor (1,0,0);
+						thdraw q withcolor (1,0,0);
+						cas := cas + shag;
+						exitif cas > dlina - (2*shag/3); % for rounding errors
+					endfor;
+				fi;
+			fi;
+		enddef;
+		initsymbol("l_u_gravitywall");
+		
+		def p_u_pollution (expr pos,theta,sc,al) =
+			U:=(.5u,.5u);
+			T:=identity aligned al rotated theta scaled sc shifted pos;
+			pickup PenC;
+			p:=(-.5u,.15u)--(.1u,.15u)..(.24u,.03u)--(.45u,.03u)--(.45u,.08u)--(.5u,.08u)--(.5u,-.08u)
+			--(.45u,-.08u)--(.45u,-.04u)--(.24u,-.04u)..(.1u,-.15u)--(-.5u,-.15u)--cycle;
+			thdraw p;
+			thfill p withcolor (0.3,0.3,0.3);
+		enddef;
+		initsymbol("p_u_pollution");
+		
+		def p_u_woodensupport (expr pos,theta,sc,al)=
+			U:=(0,0);
+			T:=identity aligned al rotated theta scaled sc shifted pos;
+			pickup PenD;
+			p := (0, .12u) .. (.12u, 0) .. (0, -.12u) .. (-.12u, 0) .. cycle;
+			thdraw p withcolor (0.5,0.25,0);
+			thfill p withcolor (0.5,0.25,0);
+		enddef;
+		initsymbol("p_u_woodensupport");
+		
+		def p_u_borehole (expr pos,theta,sc,al)=
+			U:=(0,0);
+			T:=identity aligned al rotated theta scaled sc shifted pos;
+			pickup PenD;
+			p := (0, .15u) .. (.15u, 0) .. (0, -.15u) .. (-.15u, 0) .. cycle;
+			thdraw p;
+			thfill p withcolor (0,0,1);
+		enddef;
+		initsymbol("p_u_borehole");
+		
+		def p_u_fossil (expr pos,theta,sc,al)=
+			U:=(0,0);
+			T:=identity aligned al rotated theta scaled sc shifted pos;
+			pickup PenB;
+			p := (-.05u, 0) .. (.085u, 0) .. (-.15u, 0) .. (.26u, 0) .. (-.45u, 0) .. (.63u, 0) -- (.63u, 0) .. (.47u, .05u) .. (0.32u, 0);
+			thdraw p;
+		enddef;
+		initsymbol("p_u_fossil");
+		
+		def l_u_woodensupport (expr P)=
+			T:=identity;
+			pickup PenD;
+			p := (point 0 of P) -- (point (arclength P) of P);
+			q := (point 0 of P shifted ((thdir(p,0) rotated 90)*.006u)) -- 
+				(point (arclength P) of P shifted ((thdir(p,0) rotated 90)*.006u)) --
+				(point (arclength P) of P shifted ((thdir(p,0) rotated -90)*.006u)) --
+				(point 0 of P shifted ((thdir(p,0) rotated -90)*.006u)) --
+				cycle;	
+			thdraw q withcolor (0.5,0.25,0);
+			thfill q withcolor (0.5,0.25,0);		
+		enddef;
+		initsymbol("l_u_woodensupport");
+		
+		def l_u_woodensleeper (expr P)=
+			T:=identity;
+			pickup PenD;
+			p := (point 0 of P) -- (point (arclength P) of P);
+			q := (point 0 of P shifted ((thdir(p,0) rotated 90)*.006u)) -- 
+				(point (arclength P) of P shifted ((thdir(p,0) rotated 90)*.006u)) --
+				(point (arclength P) of P shifted ((thdir(p,0) rotated -90)*.006u)) --
+				(point 0 of P shifted ((thdir(p,0) rotated -90)*.006u)) --
+				cycle;	
+			thdraw q withcolor (0.5,0.25,0);
+			thfill q withcolor (0.98,0.93,0.68);		
+		enddef;
+		initsymbol("l_u_woodensleeper");
+		
+		def p_u_closeent (expr pos,theta,sc,al)=
+			U:=(0,0);
+			T:=identity aligned al rotated theta scaled sc shifted pos;
+			pickup PenC;
+			p := (-.5u, -.2u) -- (-.3u, -.2u) -- (-.3u, .2u) -- (.3u, .2u) -- (.3u, -.2u) -- (.5u, -.2u);
+			q := (-.3u, -.2u) -- (-.3u, .2u) -- (.3u, .2u) -- cycle;
+			thdraw p;
+			thfill q;
+			p := (-.45u, -.3u) -- (.45u, .3u);
+			thdraw p;
+			p := (-.45u, .3u) -- (.45u, -.3u);
+			thdraw p;
+		enddef;
+		initsymbol("p_u_closeent");
+		
+		def p_entrance_AUT (expr pos,theta,sc,al)=
+			U:=(0,0);
+			T:=identity aligned al rotated theta scaled sc shifted pos;
+			pickup PenC;
+			p := (-.5u, -.2u) -- (-.3u, -.2u) -- (-.3u, .2u) -- (.3u, .2u) -- (.3u, -.2u) -- (.5u, -.2u);
+			q := (-.3u, -.2u) -- (-.3u, .2u) -- (.3u, .2u) -- cycle;
+			thdraw p;
+			thfill q;
+		enddef;
+		
+		def p_u_inscription (expr pos,theta,sc,al)=
+			U:=(0,0);
+			T:=identity aligned al rotated theta scaled sc shifted pos;
+			pickup PenC;
+			p := (-.5u, -.5u) -- (-.35u, -.14u) -- (.29u, .5u) -- (.5u, .29u) -- (-.14u, -.35u) -- cycle;
+			thdraw p;
+			p := (-.35u, -.14u) -- (-.14u, -.35u);
+			thdraw p;
+			p := (-.22u, -.27u) -- (.33u, .28u);
+			thdraw p;
+			q := (-.5u, -.5u) -- (-.45u, -.38u) -- (-.38u, -.45u) -- cycle;
+			thfill q;
+		enddef;
+		initsymbol("p_u_inscription");
+		
+		def p_archeomaterial (expr pos,theta,sc,al)=
+			U:=(0,0);
+			T:=identity aligned al rotated theta scaled sc shifted pos;
+			pickup PenB;
+			p := (.23u, .5u) .. (.18u, .45u) .. (.13u, .33u) .. (.13u, .19u) .. (.15u, .15u) .. 
+				(.29u, -.06u) .. (.16u, -.44u) -- (.17u, -.50u) -- (-.17u, -.50u) -- (-.16u, -.44u) .. 
+				(-.29u, -.06u) .. (-.15u, .15u) .. (-.13u, .19u) .. (-.13u, .33u) .. (-.18u, .45u) ..
+				(-.23u, .5u) -- cycle;
+			thdraw p;
+			thfill p withcolor (0.98,0.93,0.68);	
+		enddef;
+		
+		def color_l_wall_debris = (0.49,0.46,0.34) enddef;
+		
+		def l_wall_debris_AUT (expr P) =
+		  T:=identity;
+		  pickup PenC;
+		  if symbol_complexity_line > 1:
+			  thdraw P withcolor color_l_wall_debris
+		  else:
+			  laenge := arclength P;
+			  path block;
+			  path old_block;
+
+			  cur := 0;
+			  t:= arctime cur of P;
+			  % draw first block
+			  old_block := (((-.0u,-.0u)--(.25u,-.15u)--(.45u,0.01u)--(.2u,.25u)--(.05u,.15u)--cycle));
+			  block_width := (xpart urcorner old_block - xpart ulcorner old_block);
+			  old_block:=old_block rotated angle(thdir(P,0)) shifted point t of P;
+			  thclean old_block;
+			  thdraw old_block;
+
+			  cur := cur + 0.9*block_width;
+			  t:= arctime cur of P;
+				% proceed with path
+				forever:
+				  % generate random block
+					block := punked (((-.25u,-.25u)--(0.25.u,-.25u)--(0.50u,0.01u)--(0.25u,.25u)--(-.25u,.25u)--cycle)
+					  randomized (u/4))
+					  scaled (uniformdeviate(0.3)+.4)
+					  rotated uniformdeviate(360);
+				  % check width of block
+					block_width := (xpart urcorner block - xpart ulcorner block);
+					exitif cur > (laenge- 2.5*block_width/2);
+					% find next position where the block fits in without intersecting the previous one
+				  forever:
+					exitif xpart ( (block rotated angle(-direction t of P) shifted point t of P) intersectiontimes old_block) < 0;
+						cur:=cur+0.01u;
+						t:= arctime cur of P;
+						exitif cur > (laenge- 2.5*block_width/2);
+					  endfor;
+					exitif cur > (laenge- 2.5*block_width/2);
+
+					old_block:= block rotated angle(-direction t of P) shifted point t of P;
+					thclean old_block;
+					thdraw old_block;
+					cur := cur + block_width/2;
+					t:= arctime cur of P;
+				endfor;
+				t:= arctime laenge-eps of P;
+
+				% generate last block
+				  block := (((-.0u,-.0u)--(.25u,-.15u)--(.45u,0.01u)--(.2u,.25u)--(.1u,.15u)--cycle));
+				 block_width := (xpart urcorner block - xpart ulcorner block);
+
+				% scale last block to fit in the remaining gap
+				 scale_factor:=1.5*(laenge-cur)/block_width;
+				 forever:
+					   exitif scale_factor < 0;  % bruces stab at preventing endless loop at large scales
+					   exitif xpart ( (block rotated angle(-direction t of P) scaled scale_factor shifted (point t of P)) intersectiontimes old_block) < 0;
+					   scale_factor:=scale_factor-0.01;
+				 endfor;
+				 if scale_factor > 0:
+				   thclean block rotated angle(-direction t of P) scaled scale_factor shifted (point t of P);
+				   thdraw block rotated angle(-direction t of P) scaled scale_factor shifted (point t of P);
+				 fi;
+			 fi;
+		enddef;
+		
+		def color_a_clay = (0.75,0.6,0.2) enddef;
+		
+		def a_clay_AUT (expr Path) =
+			T:=identity;
+			%thclean Path;
+			if symbol_complexity_area > 1:
+				thfill Path withcolor color_a_clay
+			else:
+				thfill Path withpattern pattern_sand_AUT;
+			fi;
+		enddef;
+		
+		def color_a_sand = (1,1,0) enddef;
+		
+		def a_sand_AUT (expr Path) =
+			T:=identity;
+			%thclean Path;
+			if symbol_complexity_area > 1:
+				thfill Path withcolor color_a_sand
+			else:
+				thfill Path withpattern pattern_sand_AUT;
+			fi;
+		enddef;
+		
+		def color_l_track = (0.4,0.4,0.4) enddef;
+		
+		def l_u_track (expr P) =
+			T:=identity;
+			if symbol_complexity_line = 1:
+				pickup PenC
+				thdraw P withcolor color_l_track
+			fi;
+			if symbol_complexity_line = 0:
+				cas := 0;
+				dlina := arclength P;
+				if dlina > 0:
+					shag:=adjust_step(dlina, u);
+					pickup PenC;
+					thdraw P withcolor color_l_track;
+					forever:
+						t := arctime (cas + 0.5*shag) of P;
+						q := ((point t of P) + .2u * unitvector(thdir(P,t) rotated 90)) --
+							 ((point t of P) + .2u * unitvector(thdir(P,t) rotated -90));
+						thdraw q withcolor color_l_track;
+						cas := cas + shag;
+						exitif cas > dlina - (2*shag/3); % for rounding errors
+					endfor;
+				fi;
+			fi;
+		enddef;
+		initsymbol("l_u_track");
+		
+		def l_u_user (expr P) =
+			T:=identity;
+			if symbol_complexity_line = 0:
+				pickup PenA
+				thdraw P withcolor blue
+			fi;
+		enddef;
+		initsymbol("l_u_user");
+        
+        def p_u_block (expr pos,theta,sc,al)=
+            U:=(0,0);
+            T:=identity aligned al rotated theta scaled sc shifted pos;
+            pickup PenC;
+			p :=  (.5u,.24u)--(.5u,-.24u)--(-.5u,-.24u)--(-.5u,.24u)--cycle;
+			thclean p;
+			thdraw p;
+            q :=  fullcircle scaled 0.15u;
+            thdraw q;
+            thdraw q shifted (.3u,0);
+            thdraw q shifted (-.3u,0);
+        enddef;
+        initsymbol("p_u_block");
+		
+		def l_fault (expr P) =
+			T:=identity;
+			if symbol_complexity_line > 1:
+				pickup PenB
+				thdraw P withcolor (1,0,0)
+			else:
+	            cursor := 0;
+	            totalLength := arclength P;
+	            elementSize := adjust_step(totalLength, u); % symbol length nudged to be multiple of path length
+	            pickup PenA;
+	            forever:
+		            t0 := arctime (cursor + elementSize * 2/22) of P;
+		            t1 := arctime (cursor + elementSize * 11/22) of P;
+		            t2 := arctime (cursor + elementSize * 17/22) of P;
+		            t3 := arctime (cursor + elementSize * 18/22) of P;
+
+		            thdraw (subpath (t0,t1) of P) withcolor (1,0,0);
+		            thdraw (subpath (t2,t3) of P) withcolor (1,0,0);
+
+		            cursor := cursor + elementSize;
+		            exitif cursor > totalLength - (elementSize / 2);
+	            endfor;
+			fi;
+			thdrawoptions();
+		enddef;
+		
+        def l_u_doline (expr P) =
+          T:=identity;
+          laenge:= arclength P;
+          symsize:=adjust_step(laenge,2u);
+          triangle_width:=symsize/10;
+          cur:=(symsize-triangle_width)/2;
+          pickup PenC;
+          forever:
+            t1 := arctime (cur) of P;
+            t  := arctime (cur + triangle_width/2) of P;
+            t2 := arctime (cur + triangle_width) of P;
+              thfill (subpath (t1,t2) of P) -- 
+                ((point t of P) + symsize/2 * unitvector(thdir(P,t) rotated 90)) -- 
+                cycle;
+              thdraw (point t2 of P) -- ((point t of P) + symsize/2 * unitvector(thdir(P,t) rotated 90)) -- 
+                (point t1 of P);
+            cur := cur + symsize;
+            exitif cur > laenge - (1*symsize/3); % for rounding errors
+            t1:=arctime (cur) of P;
+          endfor;
+        enddef;
+        initsymbol("l_u_doline");    
+
+        def p_waterdrip_RSS (expr pos,theta,sc,al)=
+            U:=(.2u,.4u);
+            T:=identity aligned al rotated theta scaled sc shifted pos;
+            pickup PenC;
+            p := (0,.4u){dir -125}..{dir -105}(-.2u,-.1u){down}..
+                {up}(.2u,-.1u){dir 105}...{dir 125}(0,.4u)..cycle;
+            thfill p withcolor (0,0,1);
+            thdraw p;
+        enddef;
+		initsymbol("p_waterdrip_RSS");
+				
+	endcode
+
+  symbol-set AUT
+  symbol-assign point water-drip RSS
+  color map-fg [98 93 68]
+  symbol-color line wall:debris [50 50 50]
+  symbol-color line wall:clay [40 13 13]
+  symbol-color area debris [50 50 50]
+  symbol-color area blocks [100 0 0]
+  symbol-color area clay [40 13 13] 
+  symbol-color point blocks [100 0 0]
+
+endlayout
+
+text ru "line wall" "монолит"		# ???
+text ru "line wall:debris" "бут"
+text ru "line fault" "трещина"
+text ru "area debris" "бут"
+text ru "area blocks" "обвал"
+text ru "point station" "пикет"		# ???
+text ru "point danger" "опасность"
+text ru "point continuation" "перспективно"
+text ru "point blocks" "обвал"
+text ru "point archeo-material" "артефакт"
+text ru "point water-drip" "водокап"
+
+text ru "line u:stonework" "опорная кладка"
+text ru "line u:freestonework" "ненагруженная кладка"
+text ru "line u:rockfall" "обвал"
+text ru "line u:gravitywall" "монолит вторичный"
+text ru "line u:woodensupport" "крепь деревянная"
+text ru "line u:woodensleeper" "шпала деревянная"
+text ru "line u:track" "откатной путь"
+text ru "line u:doline" "точильный ров / воронка"
+
+text ru "point u:pollution" "мусор"
+text ru "point u:stonesupport" "крепь-кладка"
+text ru "point u:woodensupport" "крепь деревянная"
+text ru "point u:borehole" "скважина"
+text ru "point u:closeent" "закрытый вход"
+text ru "point u:inscription" "графити"
+text ru "point u:block" "готовая продукция"
+

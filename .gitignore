@@ -1,0 +1,12 @@
+*.pdf
+*.lox
+*.log
+*.dat
+*.dxf
+*.kml
+*.html
+*~$*
+!public_version/*
+!*/public_version/*
+!*/*/public_version/*
+!!components/*.*

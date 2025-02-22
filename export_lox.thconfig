@@ -1,0 +1,4 @@
+encoding  utf-8
+source withdisto.th
+
+ export model -output withdisto.lox -enable all -wall-source all
