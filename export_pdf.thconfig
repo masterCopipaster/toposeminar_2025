@@ -34,7 +34,7 @@ layout pdf-map  -copy symbols_mine
   survey-level 0                            #
   map-header 5 -3 nw                        # Положение основной надписи карты
   map-header-bg on                          # Заливка фона основной надписи вкл/выкл
-  map-image 25 -3 nw Perovo.png             # Растровое изображение в заданной точке карты
+  #map-image 25 -3 nw Perovo.png             # Растровое изображение в заданной точке карты
   legend on                                 # Легенда  карты вкл/выкл
   legend-width 40 cm                        # Ширина поля легенды карты
   legend-columns 10                         # Число колонок в легендле карты
