@@ -1,12 +1,13 @@
+encoding  utf-8
 # 2025.02.15 created by TopoDroid v 5.1.40
 
 survey seminar2025_02d -title "seminar2025 02d"
 
-  # input "seminar2025_02d-1p.th2"
+   input "seminar2025_02d-1p.th2"
 
-  # map m1p -projection plan
-  #   seminar2025_02d-1p
-  # endmap
+   map m1p -projection plan
+     seminar2025_02d-1p
+   endmap
 
   centerline
     date 2025.02.15 
@@ -618,3 +619,4 @@ survey seminar2025_02d -title "seminar2025 02d"
   endcenterline
 
 endsurvey
+
