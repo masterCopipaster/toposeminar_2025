@@ -44,15 +44,15 @@ survey withdisto -title "кам. Дистососная"
     m1p@seminar2025_09d
   endmap   
   
-  map withdisto_linep -projection plan
-  seminar2025_05d 
-  seminar2025_02d
-  seminar2025_08d
-  seminar2025_04d
-  seminar2025_06d
-  seminar2025_09d
+  #map withdisto_linep -projection plan
+  #seminar2025_05d 
+  #seminar2025_02d
+  #seminar2025_08d
+  #seminar2025_04d
+  #seminar2025_06d
+  #seminar2025_09d
   
-  endmap
+  #endmap
 
 endsurvey
 

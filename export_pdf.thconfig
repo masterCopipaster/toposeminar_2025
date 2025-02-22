@@ -43,6 +43,6 @@ layout pdf-map  -copy symbols_mine
 endlayout
 
 select withdistop@withdisto
-select withdisto_linep@withdisto
+#select withdisto_linep@withdisto
   
 export map -proj plan -fmt pdf -layout pdf-map -o withdisto_map.pdf
