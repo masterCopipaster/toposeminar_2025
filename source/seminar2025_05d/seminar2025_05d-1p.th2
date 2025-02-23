@@ -2,7 +2,7 @@ encoding utf-8
 ##XTHERION## xth_me_area_adjust -400.8 -1064.2 1601.2 41.8
 ##XTHERION## xth_me_area_zoom_to 25
 
-# 2025.02.19 created by TopoDroid v. 5.1.40
+# 2025.02.23 created by TopoDroid v. 5.1.40
 
 scrap seminar2025_05d-1p -projection plan -scale [0 0 39.3701 0 0 0 1 0 m]
 
@@ -177,7 +177,7 @@ line u:stonework -outline out
   1347.69 -608.51 1365.73 -587.66 1387.55 -571.28
 endline
 
-line u:stonework -outline out
+line u:stonework -outline out -id r03_2
   1387.55 -571.28
   1430.39 -541.08 1469.54 -501.21 1501.19 -460.19
 endline
@@ -485,7 +485,7 @@ line wall
   81.72 -627.38 70.80 -606.38 58.55 -609.34
 endline
 
-line u:stonework -outline out
+line u:stonework -outline out -id r03_1
   1407.20 -427.14
   1409.27 -425.64 1415.09 -421.15 1419.63 -417.75
 endline
@@ -520,21 +520,21 @@ endline
 
 
 point 196.85 -236.22 station -name "100"
-point 145.69 -169.45 station -name "R04"
-point 362.96 -189.53 station -name "101"
-point 589.02 -396.67 station -name "102"
-point 820.83 -583.70 station -name "103"
-point 1339.21 -604.81 station -name "105"
-point 1462.94 -428.38 station -name "R03"
-point 129.54 -332.67 station -name "106"
-point -175.33 -300.37 station -name "108"
-point 338.38 -387.96 station -name "110"
-point 360.63 -666.62 station -name "112"
-point 463.87 -540.97 station -name "114"
-point 587.78 -564.47 station -name "116"
-point 125.23 -707.37 station -name "R05"
-point -20.17 -563.97 station -name "118"
-point -99.06 -458.80 station -name "120"
+point 145.76 -169.53 station -name "R04"
+point 363.04 -189.51 station -name "101"
+point 589.08 -396.64 station -name "102"
+point 820.87 -583.64 station -name "103"
+point 1339.20 -604.76 station -name "105"
+point 1463.01 -428.21 station -name "R03"
+point 129.55 -332.64 station -name "106"
+point -175.26 -300.36 station -name "108"
+point 338.45 -387.98 station -name "110"
+point 360.69 -666.73 station -name "112"
+point 463.96 -541.06 station -name "114"
+point 587.89 -564.56 station -name "116"
+point 125.29 -707.48 station -name "R05"
+point -20.06 -564.13 station -name "118"
+point -98.87 -459.05 station -name "120"
 
 
 endscrap
