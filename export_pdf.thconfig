@@ -18,9 +18,9 @@ layout pdf-map  -copy symbols_mine
   symbol-show point cave-station            # Пикеты (show - вкл., hide - выкл.)
   symbol-show point flag:entrance           # Входы (show - вкл., hide - выкл.)
   symbol-show point flag:dig                # Раскопы (show - вкл., hide - выкл.)
-#  debug station-names                       # Показывать номера пикетов
-  debug all                                 # Режим отладки
-  color map-fg scrap                        # Раскраска по скрапам
+  debug station-names                       # Показывать номера пикетов
+#  debug all                                 # Режим отладки
+#  color map-fg scrap                        # Раскраска по скрапам
 #  color-legend off                          # Отключаем цветовую легенду
   code tex-map                              # Альтернативно одарённая основная надпись (блок)
     #\cavename={\size [25] Пример топосъёмки} % Название пещеры принудительно
@@ -43,6 +43,6 @@ layout pdf-map  -copy symbols_mine
 endlayout
 
 select withdistop@withdisto
-select withdisto_linep@withdisto
+#select withdisto_linep@withdisto
   
 export map -proj plan -fmt pdf -layout pdf-map -o withdisto_map.pdf
