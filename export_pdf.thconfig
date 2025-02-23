@@ -5,7 +5,7 @@ input symbols_mine                          # Подгружаем файл с �
   
 layout pdf-map  -copy symbols_mine
   code metapost                             # задаем уровни отображения символов карты
-    symbol_complexity_area := 0;
+    symbol_complexity_area := 1;
     symbol_complexity_line := 0;
     symbol_complexity_point := 0;
   endcode
