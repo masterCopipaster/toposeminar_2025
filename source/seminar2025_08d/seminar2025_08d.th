@@ -6,7 +6,7 @@ survey seminar2025_08d -title "seminar2025 08d"
    input "seminar2025_08d-1p.th2"
 
    map m1p -projection plan
-     seminar2025_08d-1p
+    seminar2025_08d-1p
    endmap
 
   centerline
