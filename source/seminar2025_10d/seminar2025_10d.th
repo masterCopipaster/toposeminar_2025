@@ -3,11 +3,11 @@ encoding  utf-8
 
 survey seminar2025_10d -title "seminar2025 10d"
 
-  input "seminar2025_10d-1p.th2"
+   input "seminar2025_10d-1p.th2"
 
-  map m1p -projection plan
-    seminar2025_10d-1p
-  endmap
+   map m1p -projection plan
+     seminar2025_10d-1p
+   endmap
 
   centerline
     date 2025.02.15 
