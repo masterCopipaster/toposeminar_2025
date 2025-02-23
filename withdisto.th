@@ -56,10 +56,10 @@ survey withdisto -title "кам. Дистососная"
   #seminar2025_02d
   #seminar2025_08d
   #seminar2025_04d
-  #seminar2025_06d
+  seminar2025_06d
   #seminar2025_09d
   #seminar2025_10d
-  seminar2025_03d
+  #seminar2025_03d
   
   endmap
 
