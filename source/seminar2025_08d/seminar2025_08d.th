@@ -1,17 +1,16 @@
-encoding  utf-8
-# 2025.02.22 created by TopoDroid v 5.1.40
+# 2025.02.23 created by TopoDroid v 5.1.40
 
 survey seminar2025_08d -title "seminar2025 08d"
 
-  input "seminar2025_08d-1p.th2"
+  # input "seminar2025_08d-1p.th2"
 
-   map m1p -projection plan
-     seminar2025_08d-1p
-   endmap
+  # map m1p -projection plan
+  #   seminar2025_08d-1p
+  # endmap
 
   centerline
     date 2025.02.15 
-    team "GrI_EkatL"
+    # team GrI_EkatL 
     units length meters
     units compass clino degrees
     data normal from to length compass clino
@@ -329,7 +328,7 @@ survey seminar2025_08d -title "seminar2025 08d"
     6 . 2.38 337.6 -10.4
     6 . 2.09 346.9 -7.3
     extend right
-    7 8 6.47 9.6 -2.5
+    7 R07 6.47 9.6 -2.5
     units left right up down meters
     data dimensions station left right up down
     1 4.92 2.23 2.23 0.00
@@ -344,4 +343,3 @@ survey seminar2025_08d -title "seminar2025 08d"
   endcenterline
 
 endsurvey
-
