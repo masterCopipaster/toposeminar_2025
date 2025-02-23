@@ -16,6 +16,7 @@ survey withdisto -title "кам. Дистососная"
    input source/seminar2025_06d/seminar2025_06d.th
    input source/seminar2025_09d/seminar2025_09d.th
    input source/seminar2025_10d/seminar2025_10d.th
+   input source/seminar2025_03d/seminar2025_03d.th
     
    
 
@@ -28,7 +29,9 @@ survey withdisto -title "кам. Дистососная"
    equate R04@seminar2025_05d r04@seminar2025_06d
    equate R05@seminar2025_05d R05@seminar2025_09d
    equate r08@seminar2025_06d R08@seminar2025_10d
-   equate R09@seminar2025_08d R09@seminar2025_10d   
+   equate R09@seminar2025_08d R09@seminar2025_10d 
+   equate R02@seminar2025_02d R02@seminar2025_03d  
+   equate r01@seminar2025_04d R01@seminar2025_03d 
 
 
 ### СТЫКОВКА СКРАПОВ (АБРИСОВ) ###
@@ -45,6 +48,7 @@ survey withdisto -title "кам. Дистососная"
     m1p@seminar2025_06d
     m1p@seminar2025_09d
     m1p@seminar2025_10d
+    mR02p@seminar2025_03d
   endmap   
   
   map withdisto_linep -projection plan
@@ -54,7 +58,8 @@ survey withdisto -title "кам. Дистососная"
   #seminar2025_04d
   #seminar2025_06d
   #seminar2025_09d
-  seminar2025_10d
+  #seminar2025_10d
+  seminar2025_03d
   
   endmap
 
