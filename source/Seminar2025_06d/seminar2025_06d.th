@@ -3,6 +3,12 @@ encoding  utf-8
 
 survey seminar2025_06d -title "seminar2025 06d"
 
+  input "seminar2025_06d-1p.th2"
+
+   map m1p -projection plan
+     seminar2025_06d-1p
+   endmap
+
   centerline
     date 2025.02.15 
     # team Иван Цветков, Ирина Мищенко 
@@ -423,11 +429,11 @@ survey seminar2025_06d -title "seminar2025 06d"
     16 5 2.09 358.9 -16.3
   endcenterline
 
-   input "seminar2025_06d-1p.th2"
+  # input "seminar2025_06d-1p.th2"
 
-   map m1p -projection plan
-     seminar2025_06d-1p
-   endmap
+  # map m1p -projection plan
+  #   seminar2025_06d-1p
+  # endmap
 
 endsurvey
 

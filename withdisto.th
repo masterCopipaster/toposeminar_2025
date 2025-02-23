@@ -38,6 +38,8 @@ survey withdisto -title "кам. Дистососная"
    join r03_1@seminar2025_05d r03_1@seminar2025_02d -smooth on
    join r03_2@seminar2025_05d r03_2@seminar2025_02d -smooth on  
    #join seminar2025_05d-1p@seminar2025_05d seminar2025_02d-1p@seminar2025_02d -smooth on
+    join seminar2025_08d-1p@seminar2025_08d seminar2025_06d-1p@seminar2025_06d -smooth on
+   join seminar2025_05d-1p@seminar2025_05d seminar2025_09d-1p@seminar2025_09d -smooth on
     
 ### ВКЛЮЧЕНИЕ ЧАСТЕЙ АБРИСА (СКРАПОВ ИЛИ МАПОВ) В ИТОГОВЫЙ МАП (КАРТУ) ###
   map withdistop -projection plan
@@ -56,10 +58,10 @@ survey withdisto -title "кам. Дистососная"
   #seminar2025_02d
   #seminar2025_08d
   #seminar2025_04d
-  #seminar2025_06d
+  seminar2025_06d
   #seminar2025_09d
   #seminar2025_10d
-  seminar2025_03d
+  #seminar2025_03d
   
   endmap
 
